@@ -1,0 +1,37 @@
+@(products: List[ProductInTrolley])(sum:Double)
+
+@sidebar = {
+  <ul>
+    <h1>Hello</h1>
+    <li><a href="@routes.HomeController.home">Home</a></li>
+    <li><a href="@routes.CategoryController.getCategory()">Categories</a></li>
+    <li><a>about us</a></li>
+  </ul>
+}
+
+@main("Welcome to our shop")(sidebar){
+    <h2>thanks you shopping with us, you current total is £@sum please continue</h2>
+      <div id="content">
+        <div class="container_12">
+        @for(product <- products){
+            <div class="grid_3">
+              @helper.form(routes.TrolleyController.updateTrolleyFromTrolley) {
+                  <h2>@product.name</h2>
+                  <img src="@routes.Assets.versioned(product.mainImage)"/>
+                  <h3>£@product.price</h3>
+                  <h3>Qty. @product.qty</h3>
+                  <h3>Total £@(product.price.toDouble * product.qty.toInt)</h3>
+                  <input type="hidden" name="name" value="@product.name">
+                  <input name="qty" class="productQuantity" maxlength="2" type="text" value="1" placeholder="Qty" style="width:110px">
+                  <input type="submit" class="btn-primary" value="Update Qty" style="width:110px;"/>
+              }
+                <a href="@routes.TrolleyController.removerAProductByName(product.name)">
+                    <input type="submit" class="btn-primary" value="REMOVE ITEM" style="width:110px;"/>
+                </a>
+            </div>
+        }
+
+        </div>
+      </div>
+
+}

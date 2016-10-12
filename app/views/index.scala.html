@@ -1,0 +1,34 @@
+@(products: Map[String, Product])
+
+@sidebar = {
+    <ul>
+        <h1>Hello</h1>
+        <li><a href="@routes.HomeController.home">Home</a></li>
+        <li><a href="@routes.CategoryController.getCategory()">Categories</a></li>
+        <li><a>about us</a></li>
+    </ul>
+}
+
+@main("Welcome to our shop")(sidebar){
+    <script language="JavaScript">
+            function popupAddMsg(msg) {
+                alert(msg);
+            }
+    </script>
+    <div id="content">
+        <div class="container_12">
+            @for(product <- products){
+                @helper.form(routes.TrolleyController.updateTrolley) {
+                    <div class="grid_3">
+                        <h2>@product._2.name</h2>
+                        <img src="@routes.Assets.versioned(product._2.mainImage)"/>
+                        <h3>£@product._2.price</h3>
+                        <input type="hidden" name="name" value="@product._2.name">
+                        <input name="qty" maxlength="3" type="text" value="1" placeholder="Qty">
+                        <input type="submit" class="btn-primary" value="ADD TO Trolley" onclick="popupAddMsg('This item has been added to your Trolley')"/>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,24 @@
+@(category: List[String])
+
+@sidebar = {
+    <ul>
+        <h1>Hello</h1>
+        <li><a href="@routes.HomeController.home">Home</a></li>
+        <li><a href="@routes.CategoryController.getCategory()">Categories</a></li>
+        <li><a>about us</a></li>
+    </ul>
+}
+
+@main("Welcome to our shop")(sidebar){
+    <div id="content" style="grid-auto-columns">
+        <div class="container_12">
+        @for(cat <- category){
+            <div class="grid_3">
+                <a href="@routes.CategoryController.getProductsInAnCategory(cat)">
+                    <h2>@cat</h2>
+                </a>
+            </div>
+        }
+        </div>
+    </div>
+}

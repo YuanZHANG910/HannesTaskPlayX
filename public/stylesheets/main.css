@@ -1,0 +1,38 @@
+#sidebar{
+    z-index: 9;
+    position: fixed;
+    float: left;
+    width: 192px;
+    text-align: center;
+    background-color: #F0F0F0;
+    height: 100%;
+    font-family:"Raleway";
+    font-size: 20px;
+    padding-top: 100px;
+    top: 5px;
+}
+
+#menu {
+    position: fixed;
+    z-index: 99;
+    height: 102px;
+    width: 100%;
+    background-color: #F0F0F0;
+}
+
+#searchBar {
+    background-color: #F0F0F0;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 5px;
+}
+
+#content{
+    position: relative;
+    width: 100%;
+    padding-top: 60px;
+    background-color: #fff;
+    background-size:cover;
+    text-align:center;
+}
